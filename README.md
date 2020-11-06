@@ -37,3 +37,14 @@ make
 cd hw4
 make
 ```
+
+## hw5 - CSV与二进制文件转换
+### 编译运行方式
+```
+cd hw5
+python csv2bin.py // 将csv文件(info.csv)进行格式转换，存储在二进制文件中 (info.bin)
+python loadbin.py // 从二进制文件中读取表，打印出来
+```
+
+利用Python struct.pack和struct.unpack函数，通过fmt的设置规定了二进制存储格式。  
+大端字节序，表头以“2字节字符 + 4字节字符 + 10字节字符 + 3字节字符” 格式存储，后续一个学生的信息以“4字节整型+20字节字符+5字节字符+4字节整型” 格式存储。
