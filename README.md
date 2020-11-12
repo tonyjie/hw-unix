@@ -42,8 +42,8 @@ make
 ### 编译运行方式
 ```
 cd hw5
-python csv2bin.py // 将csv文件(info.csv)进行格式转换，存储在二进制文件中 (info.bin)
-python loadbin.py // 从二进制文件中读取表，打印出来
+python3 csv2bin.py // 将csv文件(info.csv)进行格式转换，存储在二进制文件中 (info.bin)
+python3 loadbin.py // 从二进制文件中读取表，打印出来
 ```
 
 利用Python struct.pack和struct.unpack函数，通过fmt的设置规定了二进制存储格式。  

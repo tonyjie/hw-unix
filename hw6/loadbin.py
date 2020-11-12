@@ -11,6 +11,7 @@ def main():
         tabletop_chunk = fin.read(tabletop_struct.size)
         tabletop = tabletop_struct.unpack(tabletop_chunk)
         
+        
         print("%s,%s,%s,%s" % (tabletop[0].decode('utf-8'), tabletop[1].decode('utf-8'), tabletop[2].decode('utf-8'), tabletop[3].decode('utf-8')))
         
         for rec in read_records('>i20s5si', fin): # bin format for data
