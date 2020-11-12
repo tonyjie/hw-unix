@@ -20,20 +20,20 @@ def csv2bin_part(index):
         with open(part_file_name, 'r') as fin:
             line = fin.readline()
             table_top_list = line.strip().split(',')
+            for i in range(len(table_top_list)):
+                table_top_list[i] = table_top_list[i].encode('utf-8')
             table_top = tuple(table_top_list)
 
         bin_file_name = "bin/" + str(index) + ".bin"
         with open(bin_file_name, 'wb') as fout:
-            print(table_top)
             fout.write(struct.pack('>2s4s10s3s', *table_top))
     else: # data
         with open(part_file_name, 'r') as fin:
             line = fin.readline()
             personal_info = line.strip().split(',')
-            personal_info_tuple = (int(personal_info[0]), personal_info[1], personal_info[2], int(personal_info[3]))
+            personal_info_tuple = (int(personal_info[0]), personal_info[1].encode('utf-8'), personal_info[2].encode('utf-8'), int(personal_info[3]))
         bin_file_name = "bin/" + str(index) + ".bin"
         with open(bin_file_name, 'wb') as fout:
-            print(personal_info_tuple)
             fout.write(struct.pack('>i20s5si', *personal_info_tuple))
 
 def main():
@@ -58,40 +58,15 @@ def main():
     p.close()
     p.join()
     print("All subprocesses done.")
-    
+    os.system("rm -r part")
 
-    # os.system("rm -r part")
-
-    with open("info.bin", 'ab') as fout:
-        for parent, dirnames, filenames in os.walk("bin"):
-            for filepath in filenames:
-                totalpath = os.path.join(parent, filepath)
-                with open(totalpath, 'rb') as fin:
-                    line = fin.readline()
-                    print(line)
-                    fout.write(line)
-
-
-
-        # lines = fin.readlines()
-        # for line in lines:
-        #     line_num += 1
-        #     part_file_name = "part/info_" + str(line_num)
-
-
-    #     table_top_list = line.strip().split(',')
-    #     table_top = tuple(table_top_list)
-
-    #     lines = fin.readlines()
-    #     for line in lines:
-    #         personal_info = line.strip().split(',')
-    #         student_info.append((int(personal_info[0]), personal_info[1], personal_info[2], int(personal_info[3])))
-
-    # with open("info.bin", 'wb') as fout:
-    #     fout.write(struct.pack('>2s4s10s3s', *table_top)) # bin format for tabletop
-    #     write_records(student_info, '>i20s5si', fout) # bin format for data
-    
-
+    with open("info.bin", 'wb') as fout:
+        for i in range(line_num):
+            bin_file_name = "bin/" + str(i+1) + ".bin"
+            with open(bin_file_name, 'rb') as fin:
+                line = fin.read()
+                fout.write(line)
+    os.system("rm -r bin")
 
 if __name__ == "__main__":
     main()

@@ -48,3 +48,12 @@ python3 loadbin.py // 从二进制文件中读取表，打印出来
 
 利用Python struct.pack和struct.unpack函数，通过fmt的设置规定了二进制存储格式。  
 大端字节序，表头以“2字节字符 + 4字节字符 + 10字节字符 + 3字节字符” 格式存储，后续一个学生的信息以“4字节整型+20字节字符+5字节字符+4字节整型” 格式存储。
+
+## hw6 - 多进程-数据表格式转换
+### 编译运行方式
+```
+cd hw6
+python3 csv2bin.py
+python3 loadbin.py
+```
+利用Python multiprocessing.Pool 实现进程池  
