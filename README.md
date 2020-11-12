@@ -53,7 +53,17 @@ python3 loadbin.py // 从二进制文件中读取表，打印出来
 ### 编译运行方式
 ```
 cd hw6
-python3 csv2bin.py
+python3 csv2bin_multiprocess.py
 python3 loadbin.py
 ```
 利用Python multiprocessing.Pool 实现进程池  
+
+## hw7 - 进程通信-数据表格式转换
+### 编译运行方式
+```
+cd hw7
+python3 csv2bin_process_communicate.py
+python3 load_mmap.py
+```
+利用Python multiprocessing.Pipe 实现进程间通信  
+利用mmap文件映射方式读二进制文件    
