@@ -2,13 +2,6 @@ import struct
 import os
 from multiprocessing import Pool
 
-class Stu_Info:
-    def __init__(self, id, name, department, age):
-        self.id = id
-        self.name = name
-        self.department = department
-        self.age = age
-
 def write_records(records, format, f):
     record_struct = struct.Struct(format)
     for r in records:
