@@ -8,15 +8,15 @@ def main():
     port = 50002
     serversocket.bind((host, port))
     serversocket.listen(5)
+    clientsocket, addr = serversocket.accept()
 
     while True:
-        clientsocket, addr = serversocket.accept()
-        rev_content = clientsocket.recv(1024).decode('utf-8')
-        
-        index = rev_content.split('+')[0]
-        line = rev_content.split('+')[1]
+        recv_content = clientsocket.recv(1024).decode('utf-8')
+        content_list = recv_content.split('+')
+        index = content_list[0]
+        line = content_list[1]
 
-        if (index == 1): # tabletop
+        if (index == '0'): # tabletop
             table_top_list = line.strip().split(',')
             for i in range(len(table_top_list)):
                 table_top_list[i] = table_top_list[i].encode('utf-8')
@@ -29,7 +29,13 @@ def main():
 
         print(s)
         clientsocket.send(s)
-        clientsocket.close()
+        
+        if (len(content_list) == 3):
+            if (content_list[2] == '\n'):
+                break
+            
+    clientsocket.close()
+    
 
 if __name__ == "__main__":
     main()

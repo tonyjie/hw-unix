@@ -67,3 +67,32 @@ python3 load_mmap.py
 ```
 利用Python multiprocessing.Pipe 实现进程间通信  
 利用mmap文件映射方式读二进制文件    
+
+## hw8 - 分布式转码-Socket网络通信
+### 编译运行方式
+开4个命令行，分别跑3个服务器和1个客户端 
+```
+cd hw8
+python3 server1.py
+```
+
+```
+cd hw8
+python3 server2.py
+```
+
+```
+cd hw8
+python3 server3.py
+```
+
+```
+cd hw8
+python3 client.py
+```
+
+生成info.bin二进制文件，可以进行验证：
+```
+cd hw8
+python3 loadbin.py
+```
