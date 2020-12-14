@@ -1,12 +1,12 @@
 # 大作业：卷积神经网络运行框架
-C++实现卷积神经网络框架的前向功能
+C++实现卷积神经网络框架的前向推理功能
 1. 加载模型参数
 2. 读取、展示图片
 3. 实现基本运算单元并运行网络：卷积层、全连接层、Pooling层、激活函数
 4. 实现MNIST数据集的识别Demo
 
 ## Prerequisites
-### JsonCPP C++ library
+### JsonCpp C++ library
 https://github.com/open-source-parsers/jsoncpp  
 已经安装并将必要的依赖文件 (1个.cpp文件和2个.h文件) 生成并放在`./dist` 下，编译时通过`-I  ${PATH_jsoncpp_dist}` 链接即可调用JsonCPP lib   
 
